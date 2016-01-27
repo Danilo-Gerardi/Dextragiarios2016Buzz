@@ -9,7 +9,7 @@ import br.com.dextra.estagio2015.comum.Produto;
 
 public class Atividade7Test {
 	
-	//Refatorar e corrigir o metodo de verifica��o de datas, sem mexer no teste
+	//Refatorar e corrigir o metodo de verificaco de datas, sem mexer no teste
 	@Test
 	public void verificaData(){
 		Atividade7 calendario = new Atividade7();
@@ -19,14 +19,14 @@ public class Atividade7Test {
 		Assert.assertFalse(calendario.verificaData(31l, 4l, 1l));
 	}
 	
-	//Refatorar e corrigir o metodo de compara��o de strings, sem mexer no teste
+	//Refatorar e corrigir o metodo de comparaco de strings, sem mexer no teste
 	@Test
 	public void verificaString(){
 		Comparator comparator = new Comparator();
 		Assert.assertTrue(comparator.comparaStrings("Teste", "tesTe","tEste"));
 	}
 	
-	//Corrigir o metodo de recupera��o de produtos, sem mexer no teste
+	//Corrigir o metodo de recuperacao de produtos, sem mexer no teste
 	@Test
 	public void testeProdutos() {
 		ProdutoServiceImpl service = new ProdutoServiceImpl();
