@@ -9,15 +9,9 @@ import java.util.Calendar;
  * estivesse vivo este ano.
  */
 public class CintoDoElvis {
-	private static final int ANO_ATUAL = Calendar.getInstance().get(Calendar.YEAR);
-	public static final CintoDoElvis INSTANCIA = new CintoDoElvis();
-	private final int tamanhoDoCinto;
-
-	private CintoDoElvis() {
-		tamanhoDoCinto = ANO_ATUAL - 1930;
-	}
-
-	public int getTamanhoDoCinto() {
-		return tamanhoDoCinto;
+	private static final int DATA_NASCIMENTO = 1930;
+	
+	public static int getTamanhoDoCinto(){
+		return DATA_NASCIMENTO - Calendar.getInstance().get(Calendar.YEAR);
 	}
 }
