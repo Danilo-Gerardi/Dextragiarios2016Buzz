@@ -1,0 +1,8 @@
+Server: Knock! Knock!
+Client: Who's There?
+Server: Turnip
+Client: Turnip Who?
+Server: Turnip the heat, it's cold in here! Want another? (y/n)
+Client: n
+Server: Bye.
+

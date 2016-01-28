@@ -38,6 +38,7 @@ public class ProdutoServiceImpl {
 			em.getTransaction().begin();
 			em.merge(produto1);
 			em.getTransaction().commit();
+			em.getTransaction().begin();
 			em.merge(produto2);
 			em.getTransaction().commit();
 		} finally {
@@ -45,14 +46,13 @@ public class ProdutoServiceImpl {
 				em.close();
 			}
 		}
-		
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Produto> getProdutos() {
 		EntityManager em = JPAUtils.getEM();
-		Query query = em.createQuery("SELECT p.nome, p.tamanho, p.promocao FROM Produto p where p.id NOT IN :id", Produto.class);
-		query.setParameter(":id", null);
-		return query.getResultList();
+		Query query = em.createQuery("SELECT p FROM Produto p where p.id IS NOT NULL", Produto.class);
+		return (List<Produto>) query.getResultList();
 	}
 
 }

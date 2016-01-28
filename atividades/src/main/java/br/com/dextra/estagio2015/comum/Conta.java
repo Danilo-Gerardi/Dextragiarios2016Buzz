@@ -15,7 +15,7 @@ public class Conta {
 
 	@Column
 	private Double saldo;
-
+	
 	public Conta() {}
 
 	public Conta(double saldo) {
