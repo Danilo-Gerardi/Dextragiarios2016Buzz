@@ -1,7 +1,10 @@
 package br.com.dextra.estagio2015.atv12;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
+import java.util.Set;
 
 import org.junit.Test;
 
@@ -25,14 +28,13 @@ import org.junit.Test;
 public class KombiTest {
 
 	private Kombi kombi = new Kombi();
-	int sogras = 0;
+	Queue<Sogra> sogras = sogras();
+	int numeroDeSogras = 0;
 
 	@Test
 	public void colocarSograNaKombi() {
-		
-		kombi.add(new umaPuxaAOutra(" "));
+		kombi.add(new umaPuxaAOutra(sogras.poll().getNome()));
 		kombi.viaja();
-	
 	}
 	
 	public class umaPuxaAOutra extends Sogra {
@@ -50,16 +52,22 @@ public class KombiTest {
 		
 		@Override 
 		public int hashCode() {
-			if (sogras < 10) {
-				sogras++;
-				kombi.add(new umaPuxaAOutra(" "));
+			if (numeroDeSogras < 10) {
+				numeroDeSogras++;
+				kombi.add(new umaPuxaAOutra(sogras.poll().getNome()));
 			}
 			return super.hashCode();
 		}	
 	}
 
-	private List<Sogra> sogras() {
-		ArrayList<Sogra> sogras = new ArrayList<>();
+	/* Pra lidar com o problema do nome das sogras, utilizei uma fila
+	 * que remove a sogra e retorna o objeto, podendo entao adicionar
+	 * sogras sem repeticao.
+	 * */
+	
+	
+	private Queue<Sogra> sogras() {
+		Queue<Sogra> sogras = new LinkedList<Sogra>();
 		sogras.add(new Sogra("Clendeuspauda"));
 		sogras.add(new Sogra("Kyania"));
 		sogras.add(new Sogra("Perianilda"));
