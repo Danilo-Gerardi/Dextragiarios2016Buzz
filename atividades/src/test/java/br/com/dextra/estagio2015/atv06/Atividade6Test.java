@@ -17,6 +17,9 @@ public class Atividade6Test {
 		JPA_DB_Utils.start();
 	}
 
+	// A modificação foi feita na classe Banco.java 
+	// que consiste no acréscimo de uma anotation para o auto-incremento da variável id no bd
+	
 	@Test
 	public void testIdBanco() {
 		
