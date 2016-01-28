@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 
 import br.com.dextra.estagio2015.comum.Cliente;
 import br.com.dextra.estagio2015.comum.Conta;
-import br.com.dextra.estagio2015.comum.JPAUtils;
 
 public class CaixaEletronico {
 
@@ -14,7 +13,7 @@ public class CaixaEletronico {
 		EntityManager em = null;
 		Cliente cliente = null;
 		try {
-			em = JPAUtils.getEM();
+			em = JPAUtils_Atv4.getEM();
 			cliente = em.find(Cliente.class, idCliente);
 		} finally {
 			if (em != null)
@@ -25,19 +24,8 @@ public class CaixaEletronico {
 	}
 
 	public static void adicionaContaParaCliente(Cliente cliente, Conta conta) {
-		EntityManager em = null;
-		try {
-			cliente.addConta(conta);
-			em = JPAUtils.getEM();
-			em.getTransaction().begin();
-			em.merge(cliente);
-			em.getTransaction().commit();
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-
+		cliente.addConta(conta);
+		JPAUtils_Atv4.merge(cliente);
 	}
 
 }

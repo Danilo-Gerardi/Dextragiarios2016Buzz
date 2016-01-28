@@ -16,21 +16,21 @@ public class Atividade4Test {
 	public void testListaContasDeCliente() {
 		Cliente cliente = criaClienteTeste();
 		Conta conta = criaContaTeste(1000);
-		Conta conta2 = criaContaTeste(-1000);
-		cliente.getContas().add(conta);
-		cliente.getContas().add(conta2);
+		Conta conta2 = criaContaTeste(1000);
+		CaixaEletronico.adicionaContaParaCliente(cliente, conta);
+		CaixaEletronico.adicionaContaParaCliente(cliente, conta2);
 
-		cliente = (Cliente) JPAUtils.merge(cliente);
+		cliente = (Cliente) JPAUtils_Atv4.merge(cliente);
 		List<Conta> contasDeCliente = CaixaEletronico.listaContasDeCliente(1L);
 		assertEquals(2, contasDeCliente.size());
 	}
 	
 	private Cliente criaClienteTeste() {
-		return (Cliente) JPAUtils.merge(new Cliente("Jeffinho PehFofo"));
+		return (Cliente) JPAUtils_Atv4.merge(new Cliente("Jeffinho PehFofo"));
 	}
 	
 	private Conta criaContaTeste(double valor) {
-		 return (Conta) JPAUtils.merge(new Conta(valor));
+		 return (Conta) JPAUtils_Atv4.merge(new Conta(valor));
 	}
 	
 }
