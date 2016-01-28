@@ -1,11 +1,7 @@
 package br.com.dextra.estagio2015.atv03;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+
 import java.util.Scanner;
 
 /**
@@ -17,111 +13,51 @@ import java.util.Scanner;
  */
 public class BlackJack {
 
-	private static List baralho;
+
 	
 	public static void main(String[] args) {
 	
-		inicializaBaralho();
+	
 		
 		boolean parou = false;
-		boolean jogadorGanhou = false;
-		boolean computadorGanhou = false;
-		int pontosJogador = 0;
-		int pontosComputador = 0;
-		List maoDoJogador = new ArrayList();
-		List maoDoComputador = new ArrayList();
-		
-		System.out.println("Pega carta (c) ou para (p) ?");
+		boolean ganhou =false;
 		Scanner entrada = new Scanner(System.in);
-		String comando = entrada.nextLine();
-		if (comando.equals("p"))
-			parou = true;
-		
-		while (!parou) {
-			maoDoJogador.add(pegaCarta());
-			escreveMao(maoDoJogador);
-			pontosJogador = calculaPontuacao(maoDoJogador);
-			System.out.println("Pontuacao " + pontosJogador);
-			
-			if (pontosJogador > 21) {
-				System.out.println("Perdeu");
-				computadorGanhou = true;
-				parou = true;
-				break;
-			} else if (pontosJogador == 21) {
-				System.out.println("Ganhou");
-				jogadorGanhou = true;
-				parou = true;
-				break;
-			}
-				
+		String comando, resposta;
+	
+		Jogador jogador = new Jogador();
+		Jogador computador = new Jogador();
+		Jogo jogo = new Jogo();
+	
+		while(!parou){
 			System.out.println("Pega carta ou para?");
 			comando = entrada.nextLine();
-			if (comando.equals("p"))
+			if (comando.equals("p")){
 				parou = true;
-		}
-		
-		if (!jogadorGanhou && !computadorGanhou) {
-			System.out.println("COMPUTADOR JOGA");
-			while (pontosComputador < 20) { //computador nunca faz 21, mas isso nao eh problema
-				maoDoComputador.add(pegaCarta());
-				escreveMao(maoDoComputador);
-				pontosComputador = calculaPontuacao(maoDoComputador);
-				System.out.println("Pontuacao " + pontosComputador);
+				break;
 			}
-
-			System.out.println("---------------------------------");
-			System.out.println("Pontuacao Jogador " + pontosJogador);
-			System.out.println("Pontuacao Computador " + pontosComputador);
-			if (pontosComputador == 21) {
-				System.out.println("computador ganhou");
-			} else if (pontosComputador > 21 && pontosJogador < 21) {
-				System.out.println("jogador ganhou");
-			} else if (pontosComputador < 21 && (pontosComputador > pontosJogador)) {
-				System.out.println("computador ganhou");
-			} else if (pontosComputador == pontosJogador) {
-				System.out.println("Empate");
+			jogador.pegaCarta(jogo.entregaCarta());
+			System.out.println("Cartas: "+jogador.mostraMao()+" pontuacao: "+Integer.toString(jogador.pegaPontuacao()));
+			
+			if(jogador.passouDe21()){
+				parou=true;
+				break;
+			}
+			else if(jogador.verificaVitoria()){
+				ganhou=true;
+				break;
 			}
 		}
-	}
-
-	private static void escreveMao(List maoDoJogador) {
-		String mao = "Cartas: ";
-		for (Iterator it = maoDoJogador.iterator(); it.hasNext();) {
-			Integer carta = (Integer) it.next();
-			mao += carta + ",";
-		}
-
-		System.out.println(mao);
-	}
-
-	private static void inicializaBaralho() {
-
-		//no 21, o naipe nao importa
-		//cada linha eh um naipe, o 11 é o AS, pq essa é a pontuacao dele no jogo
-		baralho = Arrays.asList(
-			2, 3, 4, 5, 6, 10, 10, 10, 11, 
-			2, 3, 4, 5, 6, 10, 10, 10, 11,
-			2, 3, 4, 5, 6, 10, 10, 10, 11,
-			2, 3, 4, 5, 6, 10, 10, 10, 11
-		);
-
-		Collections.shuffle(baralho);
-	}
-
-	private static int calculaPontuacao(List maoDoJogador) {
+		entrada.close();
 		
-		int pontuacao = 0;
-		for (Iterator it = maoDoJogador.iterator(); it.hasNext();) {
-			Integer carta = (Integer) it.next();
-			pontuacao += carta;
+		if(!ganhou){
+			while(computador.pegaPontuacao()<20){
+				computador.pegaCarta(jogo.entregaCarta());
+			}
 		}
 		
-		return pontuacao; 
+		resposta=jogo.verificaGanhador(jogador.pegaPontuacao(), computador.pegaPontuacao());
+		System.out.println(resposta);
+		
 	}
 
-	private static int pegaCarta() {
-		Collections.shuffle(baralho);
-		return (Integer) baralho.get(0);
-	}
 }
