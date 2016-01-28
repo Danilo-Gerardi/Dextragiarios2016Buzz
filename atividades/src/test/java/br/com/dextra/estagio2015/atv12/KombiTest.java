@@ -57,4 +57,24 @@ public class KombiTest {
 			return super.hashCode();
 		}	
 	}
+
+	private List<Sogra> sogras() {
+		ArrayList<Sogra> sogras = new ArrayList<>();
+		sogras.add(new Sogra("Clendeuspauda"));
+		sogras.add(new Sogra("Kyania"));
+		sogras.add(new Sogra("Perianilda"));
+		sogras.add(new Sogra("Priscila a rainha do deserto"));
+		sogras.add(new Sogra("Giatila"));
+		sogras.add(new Sogra("Ramindenia"));
+		sogras.add(new Sogra("Quimiula"));
+		sogras.add(new Sogra("Breniandra"));
+		sogras.add(new Sogra("Nejauna"));
+		sogras.add(new Sogra("Menanda"));
+		sogras.add(new Sogra("Zonoastra"));
+		sogras.add(new Sogra("Denoida"));
+		sogras.add(new Sogra("Wilranda"));
+		sogras.add(new Sogra("Joaniaka"));
+		sogras.add(new Sogra("Vandaina"));
+		return sogras;
+	}
 }
