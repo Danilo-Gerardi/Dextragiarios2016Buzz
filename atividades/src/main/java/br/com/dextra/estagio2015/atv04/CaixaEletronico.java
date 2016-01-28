@@ -27,9 +27,9 @@ public class CaixaEletronico {
 	public static void adicionaContaParaCliente(Cliente cliente, Conta conta) {
 		EntityManager em = null;
 		try {
+			cliente.addConta(conta);
 			em = JPAUtils.getEM();
 			em.getTransaction().begin();
-			cliente.addConta(conta);
 			em.merge(cliente);
 			em.getTransaction().commit();
 		} finally {

@@ -2,6 +2,9 @@ package br.com.dextra.estagio2015.atv04;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+
 import junit.framework.Assert;
 
 import org.junit.BeforeClass;
@@ -14,7 +17,8 @@ import br.com.dextra.estagio2015.comum.JPAUtils;
 import br.com.dextra.estagio2015.comum.JPA_DB_Utils;
 
 public class Atividade4Test {
-
+	//Mudei a classe Cliente adicionando (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	
 	@Test
 	public void testAdicionaContaParaCliente() {
 		Cliente cliente = criaClienteTeste();
