@@ -16,11 +16,11 @@ public class CaixaEletronico {
 		try {
 			em = JPAUtils.getEM();
 			cliente = em.find(Cliente.class, idCliente);
-		} finally { 
+		} finally {
 			if (em != null)
 				em.close();
 		}
-		
+
 		return cliente.getContas();
 	}
 
@@ -37,7 +37,7 @@ public class CaixaEletronico {
 				em.close();
 			}
 		}
-		
+
 	}
-	
+
 }

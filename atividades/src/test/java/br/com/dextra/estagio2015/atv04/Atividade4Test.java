@@ -1,32 +1,16 @@
 package br.com.dextra.estagio2015.atv04;
 
+import static org.junit.Assert.*;
+
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-
-import junit.framework.Assert;
-
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.dextra.estagio2015.atv04.CaixaEletronico;
 import br.com.dextra.estagio2015.comum.Cliente;
 import br.com.dextra.estagio2015.comum.Conta;
 import br.com.dextra.estagio2015.comum.JPAUtils;
-import br.com.dextra.estagio2015.comum.JPA_DB_Utils;
 
 public class Atividade4Test {
-	//Mudei a classe Cliente adicionando (fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	
-	@Test
-	public void testAdicionaContaParaCliente() {
-		Cliente cliente = criaClienteTeste();
-		Conta conta = new Conta(1000);
-
-		CaixaEletronico.adicionaContaParaCliente(cliente, conta);
-		//FIXME esse teste nao testa nada
-	}
 
 	@Test 
 	public void testListaContasDeCliente() {
@@ -38,7 +22,7 @@ public class Atividade4Test {
 
 		cliente = (Cliente) JPAUtils.merge(cliente);
 		List<Conta> contasDeCliente = CaixaEletronico.listaContasDeCliente(1L);
-		Assert.assertEquals(2, contasDeCliente.size());
+		assertEquals(2, contasDeCliente.size());
 	}
 	
 	private Cliente criaClienteTeste() {
