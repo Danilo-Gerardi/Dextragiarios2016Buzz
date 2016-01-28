@@ -16,7 +16,7 @@ import javax.persistence.OneToMany;
 public class Cliente {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
 	@Column

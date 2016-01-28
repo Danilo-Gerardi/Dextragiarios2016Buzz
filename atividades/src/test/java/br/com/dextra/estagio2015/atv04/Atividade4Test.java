@@ -8,7 +8,6 @@ import org.junit.Test;
 
 import br.com.dextra.estagio2015.comum.Cliente;
 import br.com.dextra.estagio2015.comum.Conta;
-import br.com.dextra.estagio2015.comum.JPAUtils;
 
 public class Atividade4Test {
 
