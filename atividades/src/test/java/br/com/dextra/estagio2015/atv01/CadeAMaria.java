@@ -27,4 +27,21 @@ public class CadeAMaria {
 
 		Assert.assertEquals(1, pessoasEncontradas.size());
 	}
+
+	@Test
+	public void recuperaACoitadaDaMariasComStream() {
+
+		Map<Long, String> pessoas = new HashMap<Long, String>();
+
+		pessoas.put(1l, "Maria");
+		pessoas.put(2l, "Jose");
+		pessoas.put(3l, "Antonio");
+		pessoas.put(4l, "Tiago");
+
+		List<String> pessoasEncontradas = new Pessoas().encontrarPessoaComStream(pessoas, "Maria");
+
+		Assert.assertEquals(1, pessoasEncontradas.size());
+	}
+
+	
 }

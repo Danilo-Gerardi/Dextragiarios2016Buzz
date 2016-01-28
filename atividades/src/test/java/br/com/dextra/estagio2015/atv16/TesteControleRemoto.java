@@ -27,16 +27,17 @@ public class TesteControleRemoto {
 		
 		ControleRemoto controle = new ControleRemoto(tv);
 		
-		assertCanal(tv, controle, "01");
-		assertCanal(tv, controle, "00");
-		assertCanal(tv, controle, "02");
-		assertCanal(tv, controle, "03");
-		assertCanal(tv, controle, "04");
-		assertCanal(tv, controle, "05");
-		assertCanal(tv, controle, "06");
-		assertCanal(tv, controle, "07");
-		assertCanal(tv, controle, "08");
-		assertCanal(tv, controle, "09");
+		// retiramos o 0
+		assertCanal(tv, controle, "0");
+		assertCanal(tv, controle, "1");
+		assertCanal(tv, controle, "2");
+		assertCanal(tv, controle, "3");
+		assertCanal(tv, controle, "4");
+		assertCanal(tv, controle, "5");
+		assertCanal(tv, controle, "6");
+		assertCanal(tv, controle, "7");
+		assertCanal(tv, controle, "8");
+		assertCanal(tv, controle, "9");
 	}
 	
 	@Test public void teclasVolume() {
@@ -49,24 +50,25 @@ public class TesteControleRemoto {
 		assertVolume(tv, controle, "aumentar volume", 6);
 	}
 	
+
 	@Test public void teclasMudancaCanais() {
 		Televisao tv = getTelevisao();
 		
 		ControleRemoto controle = new ControleRemoto(tv);
 		
-		assertCanal(tv, controle, "07");
+		assertCanal(tv, controle, "7");
 		assertCanal(tv, controle, "canal anterior", 6);
 		assertCanal(tv, controle, "canal proximo", 7);
 		assertCanal(tv, controle, "canal proximo", 8);
 	}
 	
 
-	private static void click(ControleRemoto controle, String tecla) {
-		controle.clickon(tecla);
-	}
+	/*private static void click(ControleRemoto controle, String tecla) {
+		controle.clickNumberChannel(tecla);
+	}*/
 	
 	private static void assertVolume(Televisao tv, ControleRemoto controle, String tecla, int volumeEsperado) {
-		click(controle, tecla);
+		controle.clickVolume(tecla);
 		
 		assertEquals(volumeEsperado, tv.getVolume());
 		assertEquals("" + volumeEsperado, controle.getDisplay());
@@ -75,7 +77,7 @@ public class TesteControleRemoto {
 	private void assertCanal(Televisao tv, ControleRemoto controle, String tecla, Integer expected) {
 		assertEquals("", controle.getDisplay());
 		
-		click(controle, tecla);
+		controle.clickChangeChannel(tecla);
 		
 		assertEquals(expected.intValue(), tv.getCanal());
 		assertEquals(expected.toString(), controle.getDisplay());
@@ -86,9 +88,12 @@ public class TesteControleRemoto {
 	private static void assertCanal(Televisao tv, ControleRemoto controle, String tecla) {
 		assertEquals("", controle.getDisplay());
 		
-		click(controle, tecla);
+		controle.clickNumberChannel(tecla);
 		
-		assertEquals(tecla, "0" + tv.getCanal());
+		// incompativel type
+		//assertEquals(tecla, tv.getCanal());
+		
+		assertEquals(tecla, ""+ tv.getCanal());
 		assertEquals(tecla, controle.getDisplay());
 		
 		controle.setDisplay("");
@@ -99,3 +104,6 @@ public class TesteControleRemoto {
 	}
 
 }
+
+
+
