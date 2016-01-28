@@ -24,7 +24,6 @@ public class HashMapTest {
 		JPAUtils.merge(pessoa);
 		pessoa.setName("name");
 		map.put(pessoa, "comment1");
-
 		Person p2 = JPAUtils.getEM().createQuery("FROM Person", Person.class).getSingleResult();
 		assertTrue(map.containsKey(p2));
 		Person key = map.keySet().iterator().next();
