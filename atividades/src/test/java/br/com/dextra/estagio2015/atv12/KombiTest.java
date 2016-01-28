@@ -25,35 +25,36 @@ import org.junit.Test;
 public class KombiTest {
 
 	private Kombi kombi = new Kombi();
+	int sogras = 0;
 
 	@Test
 	public void colocarSograNaKombi() {
-
-		List<Sogra> sogras = sogras();
-		for (Sogra sogra : sogras) {
-			kombi.add(sogra);
-		}
+		
+		kombi.add(new umaPuxaAOutra(" "));
 		kombi.viaja();
+	
 	}
+	
+	public class umaPuxaAOutra extends Sogra {
+		
+		public umaPuxaAOutra(String nome) {
+			super(nome);
+		}
 
-	private List<Sogra> sogras() {
-		ArrayList<Sogra> sogras = new ArrayList<>();
-		sogras.add(new Sogra("Clendeuspauda"));
-		sogras.add(new Sogra("Kyania"));
-		sogras.add(new Sogra("Perianilda"));
-		sogras.add(new Sogra("Priscila a rainha do deserto"));
-		sogras.add(new Sogra("Giatila"));
-		sogras.add(new Sogra("Ramindenia"));
-		sogras.add(new Sogra("Quimiula"));
-		sogras.add(new Sogra("Breniandra"));
-		sogras.add(new Sogra("Nejauna"));
-		sogras.add(new Sogra("Menanda"));
-		sogras.add(new Sogra("Zonoastra"));
-		sogras.add(new Sogra("Denoida"));
-		sogras.add(new Sogra("Wilranda"));
-		sogras.add(new Sogra("Joaniaka"));
-		sogras.add(new Sogra("Vandaina"));
-		return sogras;
+		/* Sogra eh o tipo de HashSet criado na classe Kombi. Para adicionar um objeto
+		 * a um HashSet, o java chama um metodo no objeto chamado hashCode, que roda
+		 * verificacoes antes de adicionar o objeto a Hash. Sobrescrevendo o metodo,
+		 * podemos chamar um segundo adiciona antes de completar o primeiro, atrasando a
+		 * contagem de itens no HashSet. 
+		 * */
+		
+		@Override 
+		public int hashCode() {
+			if (sogras < 10) {
+				sogras++;
+				kombi.add(new umaPuxaAOutra(" "));
+			}
+			return super.hashCode();
+		}	
 	}
-
 }
