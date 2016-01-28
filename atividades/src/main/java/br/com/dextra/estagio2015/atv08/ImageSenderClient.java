@@ -2,19 +2,12 @@ package br.com.dextra.estagio2015.atv08;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.logging.FileHandler;
-import java.util.logging.SimpleFormatter;
-
-import com.sun.istack.internal.logging.Logger;
 
 public class ImageSenderClient {
 	public static void main(String[] args) throws IOException {
