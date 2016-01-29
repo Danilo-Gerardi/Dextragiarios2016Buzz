@@ -28,9 +28,7 @@ public class ControleRemoto {
 	}
 
 	public void clickVolume(String botao) {
-
 		if (botao.contains("volume")) {
-
 			if (botao.equals("abaixar volume")) {
 				tv.abaixarVolume();
 				this.setDisplay(String.valueOf(tv.getVolume()));

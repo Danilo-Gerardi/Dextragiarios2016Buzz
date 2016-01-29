@@ -7,19 +7,17 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
-	public static void main(String[] args) throws IOException {
+public class ConnectionHandler {
+	private Socket clientSocket;
+	private ServerSocket serverSocket;
 
-		int portNumber = 4444;
+	ConnectionHandler(Socket c, ServerSocket ss) {
+		this.clientSocket = c;
+		this.serverSocket = ss;
+	}
 
-		// while (true) {
+	public void start() {
 		try {
-			ServerSocket serverSocket = new ServerSocket(portNumber);
-			Socket clientSocket = serverSocket.accept();
-			/*
-			 * new ConnectionHandler(clientSocket, serverSocket).start();
-			 * clientSocket = null; serverSocket = null;
-			 */
 			PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
@@ -34,10 +32,7 @@ public class Server {
 				out.println(outputLine);
 			}
 		} catch (IOException e) {
-			System.out.println(
-					"Exception caught when trying to listen on port " + portNumber + " or listening for a connection");
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
-		// }
 	}
 }

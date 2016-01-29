@@ -9,6 +9,7 @@ public class Reflector {
 			InvocationTargetException, NoSuchMethodException, SecurityException {
 
 		Method m = it.getClass().getMethod("next");
+		/** Adicionei esse if apenas*/
 		if (!m.isAccessible()) {
 			m.setAccessible(true);
 		}

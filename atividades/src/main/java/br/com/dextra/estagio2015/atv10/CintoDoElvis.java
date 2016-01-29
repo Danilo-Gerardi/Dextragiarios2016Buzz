@@ -9,6 +9,7 @@ import java.util.Calendar;
  * estivesse vivo este ano.
  */
 public class CintoDoElvis {
+	/** excluí 2 variáveis e deixei apenas 1 método */
 	private static final int DATA_NASCIMENTO = 1930;
 	
 	public static int getTamanhoDoCinto(){

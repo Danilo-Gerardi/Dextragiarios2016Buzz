@@ -1,5 +1,7 @@
 package br.com.dextra.estagio2015.atv07;
 
+/** Arrumei o método verifica data pois quando era ano bissexto e fevereiro retornava a resposta errada */
+
 public class Atividade7 {
 
 	private Integer dia;
