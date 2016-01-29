@@ -23,7 +23,7 @@ public class Jogador {
 		return pontuacao;
 	}
 
-	public String mostraMao() {
+	public String pegaMao() {
 		String mao = "";
 		for (Iterator<Integer> it = this.maoDoJogador.iterator(); it.hasNext();) {
 			Integer carta = (Integer) it.next();
@@ -36,9 +36,15 @@ public class Jogador {
 	public boolean passouDe21() {
 		return pegaPontuacao() > 21;
 	}
-
-	public boolean verificaVitoria() {
-		return pegaPontuacao() == 21;
-
+	
+	public boolean parar(){
+		return true;
+	}
+	
+	public void jogadorAutomatico(){
+		Jogo jogo=new Jogo();
+		while (pegaPontuacao() < 18) {
+			pegaCarta(jogo.entregaCarta());
+		}
 	}
 }

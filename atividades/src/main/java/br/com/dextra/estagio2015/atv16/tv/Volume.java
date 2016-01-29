@@ -13,15 +13,13 @@ public class Volume {
 	}
 
 	public void abaixar() {
-		check(this.atual -1);
-		
-		this.atual--;
+		check(this.atual-1);
+		      this.atual--;;
 	}
 
 	public void aumentar() {
-		check(this.atual +1);
-		
-		this.atual++;
+		check(this.atual+1);
+		      this.atual++;
 	}
 
 	public int getAtual() {

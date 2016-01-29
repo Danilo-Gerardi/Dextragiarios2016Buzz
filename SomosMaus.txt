@@ -11,4 +11,4 @@ Congratulations. Agora que vocês terminaram, vamos ser mais rigorosos.
 
 7 - Refatorar, melhorar performance, e não temos algo semelhante a um problema da atividade 4?
 
-
+8 - Refatorar

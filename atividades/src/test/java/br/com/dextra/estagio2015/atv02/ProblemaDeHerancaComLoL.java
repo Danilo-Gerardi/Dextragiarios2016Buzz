@@ -7,10 +7,10 @@ import static org.junit.Assert.assertFalse;
 /*
 	Por que está dando NullPointer? Aparentemente está tudo certo, não está? rs
 	
-	R: O construtor do Warnick nao era executado pois a preferencia foi dada ao construtor da 
-	   classe mae. O construtor do Warwick chamava o construtor do Campeao, que rodava o metodo 
-	   prepararVida() sem setar valor algum. O problema foi resolvido transferindo a atribuicao  
-	   de valores de parametros pra classe mae.
+	R: O construtor do Warnick nao era executado. Isso acontece pois nao foi especificado na classe
+	   filha quando o construtor da mesma deve ser executada. Com isso, o construtor da classe mae 
+	   eh executada primeiro por padrao e nao executa o construtor da filha por nao ter especificacao.  
+	   O problema foi resolvido utilizando o metodo super() e passando as atribuicoes para a mae. 
  */
 public class ProblemaDeHerancaComLoL {
 
