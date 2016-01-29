@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Jogo {
-	List<Integer> baralho;
+	private static List<Integer> baralho;
 
 	public Jogo() {
 		baralho = Arrays.asList(2, 3, 4, 5, 6, 10, 10, 10, 11, 2, 3, 4, 5, 6, 10, 10, 10, 11, 2, 3, 4, 5, 6, 10, 10, 10,
@@ -13,6 +13,7 @@ public class Jogo {
 		Collections.shuffle(baralho);
 
 	}
+	
 
 	public int entregaCarta() {
 		Collections.shuffle(baralho);
