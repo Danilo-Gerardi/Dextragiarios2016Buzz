@@ -16,6 +16,10 @@ public class JPAUtils_Atv4 {
 
 	private static EntityManager em = JPAUtils_Atv4.getEM();
 
+	public static void open() {
+		em = emf.createEntityManager();
+	}
+	
 	public static EntityManager getEM() {
 		return emf.createEntityManager();
 	}

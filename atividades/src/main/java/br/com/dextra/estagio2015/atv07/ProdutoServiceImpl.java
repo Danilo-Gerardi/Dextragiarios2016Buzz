@@ -9,49 +9,23 @@ import br.com.dextra.estagio2015.comum.JPAUtils;
 import br.com.dextra.estagio2015.comum.Produto;
 
 public class ProdutoServiceImpl {
-	
+
 	public void criaProdutos() {
-		Produto produto1 = new Produto();
-		Produto produto2 = new Produto();		
-		produto1.setNome("Caixa de Som");
-		produto2.setNome("Barbeador");
-		produto1.setAltura(1.20);
-		produto2.setAltura(0.3);
-		produto1.setComprimento(1);
-		produto2.setComprimento(0.1);
-		produto1.setDescricao("Caixa de som potente");
-		produto2.setDescricao("Barbeador economico");
-		produto1.setLargura(0.8);
-		produto2.setLargura(0.1);
-		produto1.setPeso(1.1);
-		produto2.setPeso(0.5);
-		produto1.setPreco(320.9);
-		produto2.setPreco(110.9);
-		produto1.setPromocao(false);
-		produto2.setPromocao(true);
-		produto1.setTipoProduto(TipoProduto.ELETRONICO);
-		produto2.setTipoProduto(TipoProduto.SAUDE);
-		
-		EntityManager em = null;
-		try {
-			em = JPAUtils.getEM();
-			em.getTransaction().begin();
-			em.merge(produto1);
-			em.getTransaction().commit();
-			em.getTransaction().begin();
-			em.merge(produto2);
-			em.getTransaction().commit();
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
+		Produto produto1 = new Produto("Caixa de Som", "Caixa de som potente", 320.9, 1.1, 1.20, 0.8, 1,
+				TipoProduto.ELETRONICO, false);
+		Produto produto2 = new Produto("Barbeador", "Barbeador economico", 110.9, 0.5, 0.3, 0.1, 0.1, TipoProduto.SAUDE,
+				true);
+
+		JPAUtils_Atv7.open();
+		JPAUtils_Atv7.merge(produto1);
+		JPAUtils_Atv7.merge(produto2);
+		JPAUtils_Atv7.close();
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public List<Produto> getProdutos() {
-		EntityManager em = JPAUtils.getEM();
-		Query query = em.createQuery("SELECT p FROM Produto p where p.id IS NOT NULL", Produto.class);
+		JPAUtils_Atv7.open();
+		Query query = JPAUtils_Atv7.createQuery("SELECT p FROM Produto p where p.id IS NOT NULL", Produto.class);
 		return (List<Produto>) query.getResultList();
 	}
 
