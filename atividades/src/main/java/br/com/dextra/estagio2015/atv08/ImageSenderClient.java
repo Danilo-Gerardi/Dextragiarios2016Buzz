@@ -9,6 +9,8 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
+/** A atv já funcionava, eu apenas fiz o cliente gerar um log com a conversa com o servidor */
+
 public class ImageSenderClient {
 	public static void main(String[] args) throws IOException {
 		String hostName = "localhost";
