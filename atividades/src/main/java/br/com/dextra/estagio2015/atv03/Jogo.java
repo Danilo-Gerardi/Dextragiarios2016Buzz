@@ -3,7 +3,6 @@ package br.com.dextra.estagio2015.atv03;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Scanner;
 
 public class Jogo {
 	private static List<Integer> baralho;
@@ -35,44 +34,34 @@ public class Jogo {
 		}
 		return resposta;
 	}
-	
+
 	public void comeca(Jogador jogador, Jogador computador) {
 
 		boolean parou = false;
-		boolean ganhou = false;
-		Scanner entrada = new Scanner(System.in);
-		String comando, resposta;
-
+		Mensageiro mensagem = new Mensageiro();
+		String comando;
+		// vez do jogador jogar
 		while (!parou) {
-			System.out.println("Pega carta ou para?");
-			comando = entrada.nextLine();
+			comando = mensagem.continuar();
 			if (comando.equals("p")) {
 				parou = true;
 				break;
 			}
 			jogador.pegaCarta(entregaCarta());
-			System.out.println(
-					"Cartas: " + jogador.mostraMao() + "Sua pontuacao: " + Integer.toString(jogador.pegaPontuacao()));
 
+			mensagem.mostraCartas(jogador.pegaMao());
+			mensagem.mostraPontuacaoJogador(jogador.pegaPontuacao());
 			if (jogador.passouDe21()) {
 				parou = true;
 				break;
-			} else if (jogador.verificaVitoria()) {
-				ganhou = true;
-				break;
-			}
-		}
-		entrada.close();
-		// vez do computador jogar
-		if (!ganhou) {
-			while (computador.pegaPontuacao() < 20) {
-				computador.pegaCarta(entregaCarta());
 			}
 		}
 
-		resposta = verificaGanhador(jogador.pegaPontuacao(), computador.pegaPontuacao());
-		System.out.println("Pontuacao do Computador: " + computador.pegaPontuacao());
-		System.out.println(resposta);
+		// vez do computador jogar
+		computador.jogadorAutomatico();
+
+		mensagem.mostraPontuacaoComputador(computador.pegaPontuacao());
+		mensagem.mostraResultado(verificaGanhador(jogador.pegaPontuacao(), computador.pegaPontuacao()));
 	}
 
 }
