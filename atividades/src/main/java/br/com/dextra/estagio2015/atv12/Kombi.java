@@ -21,5 +21,4 @@ public class Kombi {
 			System.out.println("Tem mais de 10 Sogras nesta Kombi");
 		}
 	}
-
 }

@@ -19,6 +19,7 @@ import java.lang.reflect.Field;
  * 
  *         Qualquer coisa me chama no talk, jefferson.venancio
  * 
+ * 			reflection
  */
 public class BlackJackEh21Agora {
 	static {
@@ -32,7 +33,10 @@ public class BlackJackEh21Agora {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Bem vindo ao jogo de Black Jack!!");
+		Out out = new Out();
+		out.println("Bem vindo ao jogo de Black Jack!!");
 	}
 
 }
+
+

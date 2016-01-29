@@ -3,9 +3,11 @@ package br.com.dextra.estagio2015.atv01;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import static java.util.stream.Collectors.toList;
 
-// incompatibilidade no parametro do pessoas.get(i)
-// estar indexando de 0
+// Incompatibilidade no parametro do pessoas.get(i)
+// Estar indexando de 0
+// Melhor modo de iterar com java8 *-*
 
 public class Pessoas {
 	public List<String> encontrarPessoaPorNome(Map<Long, String> pessoas, String nome) {
@@ -17,5 +19,10 @@ public class Pessoas {
 		});
 
 		return pessoasEncontradas;
+	}
+
+	public List<String> encontrarPessoaComStream(Map<Long, String> pessoas, String nome) {
+		return pessoas.entrySet().stream().filter(e -> nome.equals(e.getValue())).map(Map.Entry::getValue)
+				.sorted(String::compareTo).collect(toList());
 	}
 }
