@@ -10,7 +10,7 @@ import br.com.dextra.estagio2015.atv04.JPAUtils_Atv4;
 public class JPAUtils_Atv7 {
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("dextragiarios");
 
-	private static EntityManager em = JPAUtils_Atv4.getEM();
+	private static EntityManager em = JPAUtils_Atv7.getEM();
 
 	public static void open() {
 		em = emf.createEntityManager();

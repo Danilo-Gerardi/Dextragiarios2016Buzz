@@ -13,6 +13,7 @@ public class Atividade4Test {
 
 	@Test 
 	public void testListaContasDeCliente() {
+		CaixaEletronico.startRequest();
 		Cliente cliente = criaClienteTeste();
 		Conta conta = criaContaTeste(1000);
 		Conta conta2 = criaContaTeste(1000);
@@ -21,6 +22,7 @@ public class Atividade4Test {
 
 		cliente = (Cliente) JPAUtils_Atv4.merge(cliente);
 		List<Conta> contasDeCliente = CaixaEletronico.listaContasDeCliente(1L);
+		CaixaEletronico.finishRequest();
 		assertEquals(2, contasDeCliente.size());
 	}
 	
