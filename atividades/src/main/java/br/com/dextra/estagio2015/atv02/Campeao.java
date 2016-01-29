@@ -8,7 +8,6 @@ public abstract class Campeao {
 	protected Double danos;
 
 	public Campeao(double a, double d, double v) {
-		
 		this.ataque = a;
 		this.defesa = d;
 		this.vida   = v;	
@@ -17,7 +16,6 @@ public abstract class Campeao {
 	}
 
 	void prepararVida() {
-
 		if (estaMorto())
 			this.danos = 100d;
 		else
@@ -25,5 +23,4 @@ public abstract class Campeao {
 	}
 
 	abstract Boolean estaMorto();
-
 }

@@ -15,7 +15,6 @@ public class CadeAMaria {
 
 	@Test
 	public void recuperaACoitadaDaMarias() {
-
 		Map<Long, String> pessoas = new HashMap<Long, String>();
 
 		pessoas.put(1l, "Maria");

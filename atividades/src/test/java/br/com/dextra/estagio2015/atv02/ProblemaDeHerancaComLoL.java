@@ -17,6 +17,5 @@ public class ProblemaDeHerancaComLoL {
 		Warwick f = new Warwick();
 		assertFalse(f.estaMorto());
 	}
-
 }
 

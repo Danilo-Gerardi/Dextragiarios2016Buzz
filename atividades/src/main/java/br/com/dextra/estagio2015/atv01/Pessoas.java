@@ -8,26 +8,14 @@ import java.util.Map;
 // estar indexando de 0
 
 public class Pessoas {
-
 	public List<String> encontrarPessoaPorNome(Map<Long, String> pessoas, String nome) {
-		
 		List<String> pessoasEncontradas = new ArrayList<String>();
-		
-		/*for (Long chave : pessoas.keySet()) {
-			
-			if (pessoas.get(chave).equals(nome))
-				pessoasEncontradas.add(nome);
 
-		}*/
-		
-		pessoas.forEach((k,v) -> {
-			
-			if(nome.equals(v))
+		pessoas.forEach((k, v) -> {
+			if (nome.equals(v))
 				pessoasEncontradas.add(nome);
-			
 		});
-		
+
 		return pessoasEncontradas;
 	}
-
 }

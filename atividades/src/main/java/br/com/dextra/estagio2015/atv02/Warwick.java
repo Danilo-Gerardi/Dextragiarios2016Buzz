@@ -8,7 +8,6 @@ public class Warwick extends Campeao {
 
 	@Override
 	public Boolean estaMorto() {
-		System.out.println(this.vida);
 		return this.vida.equals(0d);
 	}
 }
