@@ -5,13 +5,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class Jogo {
-	List<Integer> baralho;
+	private static List<Integer> baralho;
 
 	public Jogo() {
 		baralho = Arrays.asList(2, 3, 4, 5, 6, 10, 10, 10, 11, 2, 3, 4, 5, 6, 10, 10, 10, 11, 2, 3, 4, 5, 6, 10, 10, 10,
 				11, 2, 3, 4, 5, 6, 10, 10, 10, 11);
 		Collections.shuffle(baralho);
-
 	}
 
 	public int entregaCarta() {
@@ -33,6 +32,35 @@ public class Jogo {
 			resposta = "Computador ganhou!";
 		}
 		return resposta;
+	}
+
+	public void comeca(Jogador jogador, Jogador computador) {
+
+		boolean parou = false;
+		Mensageiro mensagem = new Mensageiro();
+		String comando;
+		// vez do jogador jogar
+		while (!parou) {
+			comando = mensagem.continuar();
+			if (comando.equals("p")) {
+				parou = true;
+				break;
+			}
+			jogador.pegaCarta(entregaCarta());
+
+			mensagem.mostraCartas(jogador.pegaMao());
+			mensagem.mostraPontuacaoJogador(jogador.pegaPontuacao());
+			if (jogador.passouDe21()) {
+				parou = true;
+				break;
+			}
+		}
+
+		// vez do computador jogar
+		computador.jogadorAutomatico();
+
+		mensagem.mostraPontuacaoComputador(computador.pegaPontuacao());
+		mensagem.mostraResultado(verificaGanhador(jogador.pegaPontuacao(), computador.pegaPontuacao()));
 	}
 
 }

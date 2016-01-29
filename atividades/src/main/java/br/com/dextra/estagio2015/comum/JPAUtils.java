@@ -20,5 +20,4 @@ public class JPAUtils {
 		em.close();		
 		return obj;
 	}
-
 }

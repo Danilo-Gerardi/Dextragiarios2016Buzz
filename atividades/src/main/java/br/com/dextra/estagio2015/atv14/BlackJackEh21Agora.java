@@ -1,6 +1,8 @@
 package br.com.dextra.estagio2015.atv14;
 
 import java.lang.reflect.Field;
+import java.io.FileNotFoundException;
+import java.lang.reflect.*;
 
 /**
  * @author jefferson.venancio
@@ -32,9 +34,10 @@ public class BlackJackEh21Agora {
 		}
 	}
 
-	public static void main(String[] args) {
-		Out out = new Out();
-		out.println("Bem vindo ao jogo de Black Jack!!");
+	public static void main(String[] args) throws FileNotFoundException {
+		Out out = new Out("asd");
+		System.setOut(out);
+		System.out.println("Bem vindo ao jogo de Black Jack!!");
 	}
 
 }

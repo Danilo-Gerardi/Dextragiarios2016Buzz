@@ -9,22 +9,25 @@ import javax.persistence.OneToMany;
 
 import br.com.dextra.estagio2015.comum.Cliente;
 import br.com.dextra.estagio2015.comum.Conta;
+import br.com.dextra.estagio2015.comum.JPAUtils;
 
-/** refatorei os métodos e mudei @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL) na classe Cliente*/
+/**
+ * refatorei os métodos e mudei @OneToMany(fetch = FetchType.EAGER, cascade =
+ * CascadeType.ALL) na classe Cliente
+ */
 
 public class CaixaEletronico {
 
-	public static List<Conta> listaContasDeCliente(Long idCliente) {
-		EntityManager em = null;
-		Cliente cliente = null;
-		try {
-			em = JPAUtils_Atv4.getEM();
-			cliente = em.find(Cliente.class, idCliente);
-		} finally {
-			if (em != null)
-				em.close();
-		}
+	public static void startRequest() {
+		JPAUtils_Atv4.open();
+	}
 
+	public static void finishRequest() {
+		JPAUtils_Atv4.close();
+	}
+
+	public static List<Conta> listaContasDeCliente(Long idCliente) {
+		Cliente cliente = JPAUtils_Atv4.<Cliente> find(Cliente.class, idCliente);
 		return cliente.getContas();
 	}
 

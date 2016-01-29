@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import org.junit.Test;
 
 import br.com.dextra.estagio2015.atv16.ControleRemoto;
@@ -13,12 +16,10 @@ public class TesteControleRemoto {
 
 	@Test
 	public void ligaDesliga() {
+		
 		Televisao tv = getTelevisao();
-
 		assertFalse(tv.isLigada());
-
-		new ControleRemoto(tv).clickon("liga");
-
+		new ControleRemoto(tv).clickOn();
 		assertTrue(tv.isLigada());
 	}
 
@@ -48,9 +49,9 @@ public class TesteControleRemoto {
 		ControleRemoto controle = new ControleRemoto(tv);
 
 		assertEquals(5, tv.getVolume());
-		assertVolume(tv, controle, "abaixar volume", 4);
-		assertVolume(tv, controle, "aumentar volume", 5);
-		assertVolume(tv, controle, "aumentar volume", 6);
+		assertVolumeDown(tv, controle, 4);
+		assertVolumeUp(tv, controle, 5);
+		assertVolumeUp(tv, controle, 6);
 	}
 
 	@Test
@@ -65,16 +66,19 @@ public class TesteControleRemoto {
 		assertCanal(tv, controle, "canal proximo", 8);
 	}
 
-	/*
-	 * private static void click(ControleRemoto controle, String tecla) {
-	 * controle.clickNumberChannel(tecla); }
-	 */
-
-	private static void assertVolume(Televisao tv, ControleRemoto controle, String tecla, int volumeEsperado) {
-		controle.clickVolume(tecla);
-
+	private static void assertVolume(Televisao tv, ControleRemoto controle, int volumeEsperado) {
 		assertEquals(volumeEsperado, tv.getVolume());
 		assertEquals("" + volumeEsperado, controle.getDisplay());
+	}
+	
+	private static void assertVolumeDown(Televisao tv, ControleRemoto controle, int volumeEsperado) {
+		controle.clickVolumeDown();
+		assertVolume(tv, controle, volumeEsperado);
+	}
+	
+	private static void assertVolumeUp(Televisao tv, ControleRemoto controle, int volumeEsperado) {
+		controle.clickVolumeUp();
+		assertVolume(tv, controle, volumeEsperado);
 	}
 
 	private void assertCanal(Televisao tv, ControleRemoto controle, String tecla, Integer expected) {

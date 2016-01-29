@@ -9,19 +9,16 @@ public class Canal {
 	
 	public Canal(int canalInicial) {
 		check(canalInicial);
-		
 		this.atual = canalInicial;
 	}
 	
 	public void proximo() {
 		check(this.atual +1);
-		
 		this.atual++;
 	}
 	
 	public void anterior() {
 		check(this.atual -1);
-		
 		this.atual--;
 	}
 	

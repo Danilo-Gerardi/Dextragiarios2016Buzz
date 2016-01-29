@@ -31,7 +31,6 @@ public class Atividade6Test {
 	
 	@Test
 	public void testeIdBanco() {
-		
 		List<Banco> bancos = new ArrayList<Banco>();
 
 		bancos.add(criaBanco("A"));

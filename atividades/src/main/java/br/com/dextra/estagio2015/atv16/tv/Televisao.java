@@ -4,12 +4,21 @@ public class Televisao {
 
 	private boolean ligada = false;
 	
-	private Canal canal = new Canal(0);
-	
+	private Canal  canal  = new Canal(0);
 	private Volume volume = new Volume(5);
 
 	public Televisao setVolume(int volume) {
 		this.volume = new Volume(volume);
+		return this;
+	}
+	
+	public Televisao desligar() {
+		this.ligada = false;
+		return this;
+	}
+	
+	public Televisao ligar() {
+		this.ligada = ligada;
 		return this;
 	}
 	
@@ -50,8 +59,5 @@ public class Televisao {
 		return this;
 	}
 
-	public Televisao setLigada(boolean ligada) {
-		this.ligada = ligada;
-		return this;
-	}
+	
 }
