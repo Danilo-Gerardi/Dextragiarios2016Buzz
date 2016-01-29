@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import org.junit.Test;
 
+import java.util.List;
 import br.com.dextra.estagio2015.comum.JPAUtils;
 
 public class VendaTest {
@@ -27,6 +28,18 @@ public class VendaTest {
 	 * 
 	 * 
 	 */
+	
+	/*
+	 * Acrescimo de testes para os ID's
+	 * 
+	 * Nas classes ItemVenda.java e Venda.java houve a modificacao do SequenceName 
+	 * e do name/generator de cada um, tornando-os independentes. 
+	 *  
+	 *  Deixamos de utilizar o banco de dados em arquivo (modificamos a url do persistence)
+	 *  
+	 */
+	
+	
 	@Test
 	public void testInserirVenda() {
 		Venda venda = new Venda();
@@ -45,7 +58,13 @@ public class VendaTest {
 		venda.add(new ItemVenda(200.0));
 		new VendaService().inserirVenda(venda);
 		
-		EntityManager em = JPAUtils.getEM();
-		assertEquals(3, em.createQuery("FROM Venda", Venda.class).getResultList().size());
+		EntityManager em = JPAUtils.getEM();	
+		
+		assertEquals(3,  em.createQuery("FROM Venda", Venda.class).getResultList().size());
+		assertEquals(1L, em.createQuery("FROM Venda", Venda.class).getResultList().stream().map(e -> e.getId()).toArray()[0]);
+		assertEquals(2L, em.createQuery("FROM Venda", Venda.class).getResultList().stream().map(e -> e.getId()).toArray()[1]);
+		assertEquals(3L, em.createQuery("FROM Venda", Venda.class).getResultList().stream().map(e -> e.getId()).toArray()[2]);
+		assertEquals(2L, em.createQuery("FROM ItemVenda", ItemVenda.class).getResultList().stream().map(e -> e.getId()).toArray()[1]);
+		
 	}
 }

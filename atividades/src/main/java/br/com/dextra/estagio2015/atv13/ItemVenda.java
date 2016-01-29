@@ -10,8 +10,8 @@ import javax.persistence.SequenceGenerator;
 public class ItemVenda {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
-	@SequenceGenerator(name = "seq", allocationSize = 1, sequenceName = "sequence")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqItem")
+	@SequenceGenerator(name = "seqItem", allocationSize = 1, sequenceName = "sequenceItem")
 	private Long id;
 	
 	private Double valor;
