@@ -1,0 +1,14 @@
+Congratulations. Agora que vocês terminaram, vamos ser mais rigorosos.
+
+2 - O construtor do Warnick nao era executado pois a preferencia foi dada ao construtor da 
+	   classe mae. - Explicar melhor
+
+3 - Refatorar Jogo/Blackjack(IO e Logica misturadas), Jogador. Avaliar testes(Esta tudo testado?).
+
+4 - Melhorar gerenciamente do entityManager
+
+6 - Coisas desnecessarias
+
+7 - Refatorar, melhorar performance, e não temos algo semelhante a um problema da atividade 4?
+
+
