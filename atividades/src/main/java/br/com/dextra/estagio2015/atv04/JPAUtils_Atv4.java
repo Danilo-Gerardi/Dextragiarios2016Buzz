@@ -4,6 +4,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+/** Criei essa classe pois a JPAUtils original fechava o EntityManager a cada merge, e isso fazia com que não fosse posível fazer 2 merges seguidos ;( */
+
 public class JPAUtils_Atv4 {
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("dextragiarios");
 
