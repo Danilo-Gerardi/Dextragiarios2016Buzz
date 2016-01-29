@@ -22,9 +22,8 @@ public class ControleRemoto {
 	}
 
 	// retiramos a variavel displaybotao que era inutil rs
-	public void clickon(String botao) {
-		if (botao.equals("liga"))
-			tv.setLigada(true);
+	public void clickon() {
+		tv.setLigada(true);
 	}
 
 	public void clickVolume(String botao) {
@@ -41,7 +40,6 @@ public class ControleRemoto {
 
 	// Exclusão do botaoAsInt
 	public void clickNumberChannel(String botao) {
-		
 
 		if (NumberUtils.isNumber(botao)) {
 
@@ -49,13 +47,14 @@ public class ControleRemoto {
 
 			this.setDisplay(botao);
 
-		} else canal = this.tv.getCanal();
+		} else
+			canal = this.tv.getCanal();
 		refreshDisplay(canal);
 	}
 
 	// Exclusão do canalAnterior e proximoCanal
 	public void clickChangeChannel(String botao) {
-	
+
 		if (botao.contains("canal")) {
 			if (botao.equals("canal anterior")) {
 				canal = tv.getCanal() - 1;
@@ -63,7 +62,8 @@ public class ControleRemoto {
 			} else if (botao.equals("canal proximo")) {
 				canal = tv.getCanal() + 1;
 				this.setDisplay(String.valueOf(tv.getCanal() + 1));
-			} else 	canal = this.tv.getCanal();
+			} else
+				canal = this.tv.getCanal();
 
 		}
 		this.refreshDisplay(canal);

@@ -17,7 +17,7 @@ public class TesteControleRemoto {
 
 		assertFalse(tv.isLigada());
 
-		new ControleRemoto(tv).clickon("liga");
+		new ControleRemoto(tv).clickon();
 
 		assertTrue(tv.isLigada());
 	}
@@ -64,11 +64,6 @@ public class TesteControleRemoto {
 		assertCanal(tv, controle, "canal proximo", 7);
 		assertCanal(tv, controle, "canal proximo", 8);
 	}
-
-	/*
-	 * private static void click(ControleRemoto controle, String tecla) {
-	 * controle.clickNumberChannel(tecla); }
-	 */
 
 	private static void assertVolume(Televisao tv, ControleRemoto controle, String tecla, int volumeEsperado) {
 		controle.clickVolume(tecla);

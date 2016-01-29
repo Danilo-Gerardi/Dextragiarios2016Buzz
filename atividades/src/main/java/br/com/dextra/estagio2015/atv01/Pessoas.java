@@ -22,7 +22,10 @@ public class Pessoas {
 	}
 
 	public List<String> encontrarPessoaComStream(Map<Long, String> pessoas, String nome) {
-		return pessoas.entrySet().stream().filter(e -> nome.equals(e.getValue())).map(Map.Entry::getValue)
-				.sorted(String::compareTo).collect(toList());
+		return pessoas.entrySet().stream()
+				.filter(e -> nome.equals(e.getValue()))
+				.map(Map.Entry::getValue)
+				.sorted(String::compareTo)
+				.collect(toList());
 	}
 }
