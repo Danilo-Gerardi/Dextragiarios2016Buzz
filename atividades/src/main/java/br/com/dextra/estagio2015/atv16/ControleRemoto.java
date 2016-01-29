@@ -3,8 +3,8 @@ package br.com.dextra.estagio2015.atv16;
 import br.com.dextra.estagio2015.atv16.tv.Televisao;
 
 public class ControleRemoto {
+	
 	private Integer canal;
-
 	private Televisao tv;
 	private String display = "";
 
@@ -22,11 +22,30 @@ public class ControleRemoto {
 	}
 
 	// retiramos a variavel displaybotao que era inutil rs
-	public void clickon() {
-		tv.setLigada(true);
+	
+	/* Botao de Ligar/Desligar */
+	
+	public void clickOn() {
+		tv.ligar();
 	}
-
-	public void clickVolume(String botao) {
+	
+	public void clickOff() {
+		tv.desligar();
+	}
+	
+	/* Botao de Volume */
+	
+	public void clickVolumeUp() {
+		tv.aumentarVolume();
+		this.setDisplay(String.valueOf(tv.getVolume()));
+	}
+	
+	public void clickVolumeDown() {
+		tv.abaixarVolume();
+		this.setDisplay(String.valueOf(tv.getVolume()));
+	}
+	
+	/*public void clickVolume(String botao) {
 		if (botao.contains("volume")) {
 			if (botao.equals("abaixar volume")) {
 				tv.abaixarVolume();
@@ -36,7 +55,7 @@ public class ControleRemoto {
 				this.setDisplay(String.valueOf(tv.getVolume()));
 			}
 		}
-	}
+	}*/
 
 	// Exclusão do botaoAsInt
 	public void clickNumberChannel(String botao) {

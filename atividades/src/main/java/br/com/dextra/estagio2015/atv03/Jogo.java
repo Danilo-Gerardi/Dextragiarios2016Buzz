@@ -11,7 +11,6 @@ public class Jogo {
 		baralho = Arrays.asList(2, 3, 4, 5, 6, 10, 10, 10, 11, 2, 3, 4, 5, 6, 10, 10, 10, 11, 2, 3, 4, 5, 6, 10, 10, 10,
 				11, 2, 3, 4, 5, 6, 10, 10, 10, 11);
 		Collections.shuffle(baralho);
-
 	}
 
 	public int entregaCarta() {
