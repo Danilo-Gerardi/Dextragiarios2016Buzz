@@ -8,14 +8,16 @@ import javax.persistence.Id;
 @Entity
 public class Banco {
 
-	@Id 
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	private String nome;
 
-	private Banco() { }
-	
+	public Banco() {
+
+	}
+
 	public Banco(String nome) {
 		this.nome = nome;
 	}
