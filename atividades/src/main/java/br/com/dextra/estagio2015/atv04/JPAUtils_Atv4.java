@@ -7,11 +7,6 @@ import javax.persistence.Persistence;
 import br.com.dextra.estagio2015.comum.Cliente;
 import br.com.dextra.estagio2015.comum.JPAUtils;
 
-/**
- * Criei essa classe pois a JPAUtils original fechava o EntityManager a cada
- * merge, e isso fazia com que não fosse posível fazer 2 merges seguidos ;(
- */
-
 public class JPAUtils_Atv4 {
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("dextragiarios");
 	private static EntityManager em;

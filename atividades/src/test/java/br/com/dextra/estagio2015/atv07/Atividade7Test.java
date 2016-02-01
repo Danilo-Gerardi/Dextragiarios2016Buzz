@@ -30,8 +30,10 @@ public class Atividade7Test {
 	@Test
 	public void testeProdutos() {
 		ProdutoServiceImpl service = new ProdutoServiceImpl();
+		service.startRequest();
 		service.criaProdutos();
 		List<Produto> produtos = service.getProdutos();
+		service.finishRequest();
 		Assert.assertEquals(produtos.get(0).getNome(), "Caixa de Som");
 		Assert.assertEquals(produtos.get(0).getComprimento(), 1, 0.01);
 		Assert.assertFalse(produtos.get(0).getPromocao());
