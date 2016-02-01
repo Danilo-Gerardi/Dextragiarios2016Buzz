@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ConnectionHandler {
+public class ConnectionHandler implements Runnable {
 	private Socket clientSocket;
 	private ServerSocket serverSocket;
 
@@ -16,7 +16,8 @@ public class ConnectionHandler {
 		this.serverSocket = ss;
 	}
 
-	public void start() {
+	@Override
+	public void run() {
 		try {
 			PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
