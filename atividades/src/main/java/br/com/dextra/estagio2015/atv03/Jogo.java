@@ -27,18 +27,6 @@ public class Jogo {
 
 	public String verificaGanhador() {
 		String resposta = "";
-		/*
-		if (this.computador.passouDe21() && !this.jogador.passouDe21()) {
-			resposta = "Voce ganhou!";
-		} else if ((!this.jogador.passouDe21() && !this.computador.passouDe21())
-				&& (this.jogador.pegaPontuacao() > this.computador.pegaPontuacao())) {
-			resposta = "Voce ganhou!";
-		} else if ((this.computador.passouDe21() && this.computador.passouDe21())
-				|| (this.jogador.pegaPontuacao() == this.computador.pegaPontuacao())) {
-			resposta = "Empate!";
-		} else {
-			resposta = "Computador ganhou!";
-		}*/
 		if(this.jogador.passouDe21() || (this.computador.pegaPontuacao() > this.jogador.pegaPontuacao())){
 			resposta="Voce perdeu!";
 		}else if(this.jogador.pegaPontuacao() == this.computador.pegaPontuacao()){
