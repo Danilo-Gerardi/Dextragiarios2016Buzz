@@ -38,15 +38,4 @@ public class Jogador {
 	}
 	
 	
-	public boolean parar(){
-		return true;
-	}
-	
-	
-	/*public void jogadorAutomatico(){
-		Jogo jogo=new Jogo();
-		while (pegaPontuacao() < 18) {
-			pegaCarta(Jogo.entregaCarta());
-		}
-	}*/
 }
