@@ -25,7 +25,7 @@ public class ThrowableMapper implements ExceptionMapper<Throwable> {
 		} catch (Exception e) {
 			logger.error("Error trying to rollback", e);
 		}
-
+		
 		logger.error("Uncaught exception", exception);
 		return Response.status(Status.INTERNAL_SERVER_ERROR).entity(exception.getMessage()).build();
 	}

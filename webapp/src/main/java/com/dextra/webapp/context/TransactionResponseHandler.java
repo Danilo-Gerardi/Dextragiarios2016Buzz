@@ -28,11 +28,9 @@ public class TransactionResponseHandler implements ResponseHandler {
                 transaction.commit();
             }
             return response;
-
         } catch (Exception e) {
             logger.error("Error trying to commit");
-            ResponseBuilder responseBuilder = Response.status(Status.INTERNAL_SERVER_ERROR);
-            return responseBuilder.entity(e.getMessage()).build();
+            throw new RuntimeException(e);
         }
     }
 

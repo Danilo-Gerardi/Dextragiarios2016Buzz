@@ -29,8 +29,7 @@ public class TransactionRequestHandler implements RequestHandler {
 
         } catch (Exception e) {
             logger.error("Error on transaction starting", e);
-            ResponseBuilder responseBuilder = Response.status(Status.INTERNAL_SERVER_ERROR);
-            return responseBuilder.entity(e.getMessage()).build();
+            throw new RuntimeException(e);
         }
     }
 }
