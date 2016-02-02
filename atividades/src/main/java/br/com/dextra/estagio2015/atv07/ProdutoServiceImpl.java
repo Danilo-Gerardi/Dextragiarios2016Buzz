@@ -12,11 +12,11 @@ import br.com.dextra.estagio2015.comum.Produto;
 public class ProdutoServiceImpl {
 
 	public static void startRequest() {
-		JPAUtils_Atv4.open();
+		JPAUtils_Atv7.open();
 	}
 
 	public static void finishRequest() {
-		JPAUtils_Atv4.close();
+		JPAUtils_Atv7.close();
 	}
 	
 	public void criaProdutos() {
@@ -25,15 +25,12 @@ public class ProdutoServiceImpl {
 		Produto produto2 = new Produto("Barbeador", "Barbeador economico", 110.9, 0.5, 0.3, 0.1, 0.1, TipoProduto.SAUDE,
 				true);
 
-		JPAUtils_Atv7.open();
 		JPAUtils_Atv7.merge(produto1);
 		JPAUtils_Atv7.merge(produto2);
-		JPAUtils_Atv7.close();
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Produto> getProdutos() {
-		JPAUtils_Atv7.open();
 		Query query = JPAUtils_Atv7.createQuery("SELECT p FROM Produto p where p.id IS NOT NULL", Produto.class);
 		return (List<Produto>) query.getResultList();
 	}
