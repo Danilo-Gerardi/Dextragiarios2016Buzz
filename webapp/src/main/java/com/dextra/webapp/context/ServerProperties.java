@@ -11,6 +11,7 @@ public class ServerProperties {
     private final Properties properties;
 
     private ServerProperties() {
+    	
         this.properties = new Properties();
         try {
             this.properties.load(this.getClass().getClassLoader().getResourceAsStream(NAME));

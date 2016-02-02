@@ -12,20 +12,22 @@ import org.slf4j.LoggerFactory;
 @Provider
 public class ThrowableMapper implements ExceptionMapper<Throwable> {
 
-    private final Logger logger = LoggerFactory.getLogger(ThrowableMapper.class);
+	private final Logger logger = LoggerFactory.getLogger(ThrowableMapper.class);
 
-    @Override
-    public Response toResponse(Throwable exception) {
-        UserTransaction transaction = TransactionContainer.get();
+	@Override
+	public Response toResponse(Throwable exception) {
+		UserTransaction transaction = TransactionContainer.get();
 
-        try {
-            transaction.rollback();
-        } catch (Exception e) {
-            logger.error("Error trying to rollback", e);
-        }
+		try {
+			if (transaction.getStatus() == javax.transaction.Status.STATUS_ACTIVE) {
+				transaction.rollback();
+			}
+		} catch (Exception e) {
+			logger.error("Error trying to rollback", e);
+		}
 
-        logger.error("Uncaught exception", exception);
-        return Response.status(Status.INTERNAL_SERVER_ERROR).entity(exception.getMessage()).build();
-    }
+		logger.error("Uncaught exception", exception);
+		return Response.status(Status.INTERNAL_SERVER_ERROR).entity(exception.getMessage()).build();
+	}
 
 }
