@@ -28,7 +28,7 @@ public class Hello {
         StringBuilder builder = new StringBuilder();
         builder.append("<html>");
         builder.append("<head>");
-        //builder.append("\t<title>Ola Usuario\u000d!</title>");
+        //builder.append("\t<title>Ola Usuariou000d!</title>");
         builder.append("\t<title>Ola " + usuario.getNome() + "</title>");
         builder.append("\t<link href=\"/style/style.css\" rel=\"stylesheet\" type=\"text/css\" />");
         builder.append("</head>");
