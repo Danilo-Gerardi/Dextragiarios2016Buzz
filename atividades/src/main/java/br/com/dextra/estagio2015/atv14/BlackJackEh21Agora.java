@@ -34,11 +34,14 @@ public class BlackJackEh21Agora {
 		}
 	}
 
-	public static void main(String[] args) throws FileNotFoundException {
-		Out out = new Out("asd");
+	public static void main(String[] args)  {
+		Out out = new Out(System.out);
 		System.setOut(out);
 		System.out.println("Bem vindo ao jogo de Black Jack!!");
+		
+		
 	}
+	
 
 }
 

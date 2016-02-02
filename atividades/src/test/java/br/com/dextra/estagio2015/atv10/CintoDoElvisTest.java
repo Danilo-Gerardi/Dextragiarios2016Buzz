@@ -1,7 +1,5 @@
 package br.com.dextra.estagio2015.atv10;
 
-import static org.junit.Assert.*;
-
 import java.util.Calendar;
 
 import org.junit.Assert;
