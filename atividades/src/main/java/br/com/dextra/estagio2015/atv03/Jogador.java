@@ -37,14 +37,16 @@ public class Jogador {
 		return pegaPontuacao() > 21;
 	}
 	
+	
 	public boolean parar(){
 		return true;
 	}
 	
-	public void jogadorAutomatico(){
+	
+	/*public void jogadorAutomatico(){
 		Jogo jogo=new Jogo();
 		while (pegaPontuacao() < 18) {
-			pegaCarta(jogo.entregaCarta());
+			pegaCarta(Jogo.entregaCarta());
 		}
-	}
+	}*/
 }

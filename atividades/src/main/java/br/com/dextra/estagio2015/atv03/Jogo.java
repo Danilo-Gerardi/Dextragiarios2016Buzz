@@ -6,8 +6,14 @@ import java.util.List;
 
 public class Jogo {
 	private static List<Integer> baralho;
+	//
+	Jogador jogador = new Jogador();
+	Jogador computador = new Jogador();
 
-	public Jogo() {
+	//
+	public Jogo(Jogador jogador, Jogador computador) {
+		this.jogador = jogador;
+		this.computador = computador;
 		baralho = Arrays.asList(2, 3, 4, 5, 6, 10, 10, 10, 11, 2, 3, 4, 5, 6, 10, 10, 10, 11, 2, 3, 4, 5, 6, 10, 10, 10,
 				11, 2, 3, 4, 5, 6, 10, 10, 10, 11);
 		Collections.shuffle(baralho);
@@ -16,51 +22,49 @@ public class Jogo {
 	public int entregaCarta() {
 		Collections.shuffle(baralho);
 		return (Integer) baralho.get(0);
+
 	}
 
-	public String verificaGanhador(int pontosJogador, int pontosComputador) {
+	public String verificaGanhador() {
 		String resposta = "";
-
-		// Encurtei os if's
-		if ((pontosJogador == 21) || (pontosComputador > 21 && pontosJogador < 21)) {
-			resposta = "Voce ganhou!";
-		} else if ((pontosJogador < 21 && pontosComputador < 21) && (pontosJogador > pontosComputador)) {
-			resposta = "Voce ganhou!";
-		} else if ((pontosComputador > 21 && pontosJogador > 21) || (pontosComputador == pontosJogador)) {
-			resposta = "Empate!";
-		} else {
-			resposta = "Computador ganhou!";
+		if(this.jogador.passouDe21() || (this.computador.pegaPontuacao() > this.jogador.pegaPontuacao())){
+			resposta="Voce perdeu!";
+		}else if(this.jogador.pegaPontuacao() == this.computador.pegaPontuacao()){
+			resposta="Empate!";
+		} else{
+			resposta="Computador ganhou!";
 		}
+		
 		return resposta;
 	}
 
-	public void comeca(Jogador jogador, Jogador computador) {
-
+	public void comeca() {
+		boolean perdeu=false;
 		boolean parou = false;
 		Mensageiro mensagem = new Mensageiro();
 		String comando;
 		// vez do jogador jogar
-		while (!parou) {
+		while (!parou && !perdeu) {
 			comando = mensagem.continuar();
 			if (comando.equals("p")) {
 				parou = true;
 				break;
 			}
-			jogador.pegaCarta(entregaCarta());
+			this.jogador.pegaCarta(entregaCarta());
 
-			mensagem.mostraCartas(jogador.pegaMao());
-			mensagem.mostraPontuacaoJogador(jogador.pegaPontuacao());
-			if (jogador.passouDe21()) {
-				parou = true;
-				break;
+			mensagem.mostraCartas(this.jogador.pegaMao());
+			mensagem.mostraPontuacaoJogador(this.jogador.pegaPontuacao());
+			if (this.jogador.passouDe21()) {
+				perdeu = true;
 			}
 		}
 
 		// vez do computador jogar
-		computador.jogadorAutomatico();
-
-		mensagem.mostraPontuacaoComputador(computador.pegaPontuacao());
-		mensagem.mostraResultado(verificaGanhador(jogador.pegaPontuacao(), computador.pegaPontuacao()));
+		while (this.computador.pegaPontuacao() < 18 && !perdeu) {
+			this.computador.pegaCarta(entregaCarta());
+		}
+		mensagem.mostraPontuacaoComputador(this.computador.pegaPontuacao());
+		mensagem.mostraResultado(verificaGanhador());
 	}
 
 }

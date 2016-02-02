@@ -39,7 +39,7 @@ public class Atividade3Test {
 		assertEquals(true, jogador.verificaVitoria());
 	}*/
 
-	@Test
+	/*@Test
 	public void testVerificaGanhador() throws Exception {
 		Jogo jogo = new Jogo();
 		Jogador jogador = new Jogador();
@@ -49,6 +49,6 @@ public class Atividade3Test {
 		computador.pegaCarta(10);
 		computador.pegaCarta(10);
 		assertEquals("Computador ganhou!", jogo.verificaGanhador(jogador.pegaPontuacao(), computador.pegaPontuacao()));
-	}
+	}*/
 
 }

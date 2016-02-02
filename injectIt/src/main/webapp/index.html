@@ -25,7 +25,7 @@
             url : 'api/usuarios',
             type : "GET",
             data : {
-                name : $("#search").val()
+            	search : $("#search").val()
             }
         }).done(function(resp) {
             $("#usuarios").html(resp);
