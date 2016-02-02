@@ -27,12 +27,12 @@ public class Jogo {
 
 	public String verificaGanhador() {
 		String resposta = "";
-		if(this.jogador.passouDe21() || (this.computador.pegaPontuacao() > this.jogador.pegaPontuacao())){
+		if(this.jogador.passouDe21() || (this.computador.pegaPontuacao() <=21 && this.computador.pegaPontuacao()> this.jogador.pegaPontuacao())){
 			resposta="Voce perdeu!";
 		}else if(this.jogador.pegaPontuacao() == this.computador.pegaPontuacao()){
 			resposta="Empate!";
 		} else{
-			resposta="Computador ganhou!";
+			resposta="Voce ganhou!";
 		}
 		
 		return resposta;

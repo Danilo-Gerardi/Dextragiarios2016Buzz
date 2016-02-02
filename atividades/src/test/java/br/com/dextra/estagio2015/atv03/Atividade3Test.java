@@ -31,24 +31,15 @@ public class Atividade3Test {
 		assertEquals(true, jogador.passouDe21());
 	}
 
-	/*@Test
-	public void testVerificaVitoria() throws Exception {
-		Jogador jogador = new Jogador();
-		jogador.pegaCarta(10);
-		jogador.pegaCarta(11);
-		assertEquals(true, jogador.verificaVitoria());
-	}*/
-
-	/*@Test
+	@Test
 	public void testVerificaGanhador() throws Exception {
-		Jogo jogo = new Jogo();
 		Jogador jogador = new Jogador();
-		jogador.pegaCarta(10);
-		jogador.pegaCarta(7);
 		Jogador computador = new Jogador();
-		computador.pegaCarta(10);
-		computador.pegaCarta(10);
-		assertEquals("Computador ganhou!", jogo.verificaGanhador(jogador.pegaPontuacao(), computador.pegaPontuacao()));
-	}*/
+		jogador.pegaCarta(10);
+		computador.pegaCarta(11);
+		Jogo jogo=new Jogo(jogador,computador);
+		assertEquals("Voce perdeu!", jogo.verificaGanhador());
+		
+	}
 
 }
