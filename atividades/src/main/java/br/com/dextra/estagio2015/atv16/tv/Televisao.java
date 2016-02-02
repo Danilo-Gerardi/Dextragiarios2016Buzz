@@ -18,7 +18,7 @@ public class Televisao {
 	}
 	
 	public Televisao ligar() {
-		this.ligada = ligada;
+		this.ligada = true;
 		return this;
 	}
 	

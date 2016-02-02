@@ -13,6 +13,6 @@ public class CintoDoElvis {
 	private static final int DATA_NASCIMENTO = 1930;
 	
 	public static int getTamanhoDoCinto(){
-		return DATA_NASCIMENTO - Calendar.getInstance().get(Calendar.YEAR);
+		return Calendar.getInstance().get(Calendar.YEAR)-DATA_NASCIMENTO;
 	}
 }
